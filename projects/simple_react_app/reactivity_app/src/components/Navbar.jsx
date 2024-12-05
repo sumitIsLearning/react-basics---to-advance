@@ -1,6 +1,5 @@
 import { useState } from "react";
-
-useState
+import { NavLink , Link } from "react-router";
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -30,39 +29,38 @@ const Navbar = () => {
             </div>
           </div>
           <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
-            <a
-              href="#"
-              className="border-transparent text-white hover:border-gray-300 hover:text-gray-200 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+            <NavLink
+              to="/features"
+              className={({isActive}) => isActive ? "border-indigo-500 text-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium" : "border-transparent text-white hover:border-gray-300 hover:text-gray-200 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"}
             >
               Features
-            </a>
-            <a
-              href="#"
-              className="border-indigo-500 text-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
-              aria-current="page"
+            </NavLink>
+            <NavLink
+              to={"/"}
+              className={({isActive}) => isActive ? "border-indigo-500 text-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium" : "border-transparent text-white hover:border-gray-300 hover:text-gray-200 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"}
             >
               Customers
-            </a>
-            <a
-              href="#"
-              className="border-transparent text-white hover:border-gray-300 hover:text-gray-200 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+            </NavLink>
+            <NavLink
+              to={"/integration"}
+              className={({isActive}) => isActive ? "border-indigo-500 text-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium" : "border-transparent text-white hover:border-gray-300 hover:text-gray-200 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"}
             >
               Integrations
-            </a>
+            </NavLink>
           </div>
           <div className="hidden sm:ml-6 sm:flex sm:items-center">
-            <a
-              href="#"
+            <Link
+              to={"#"}
               className="text-white hover:text-gray-200  px-3 py-2 rounded-md text-sm font-medium"
             >
               Login
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to={"#"}
               className="ml-3 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
               Sign Up
-            </a>
+            </Link>
           </div>
           <div className="flex items-center sm:hidden">
             {/* Mobile menu button */}
@@ -114,37 +112,36 @@ const Navbar = () => {
       {mobileMenuOpen && (
         <div className="sm:hidden md:hidden" id="mobile-menu">
           <div className="pt-2 pb-3 space-y-1">
-            <a
-              href="#"
-              className="border-transparent text-white hover:bg-emerald-700 hover:border-gray-300  block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
+            <NavLink
+              to={"/features"}
+              className={({isActive}) => isActive ? "border-transparent text-white hover:bg-emerald-700 border-indigo-600  block pl-3 pr-4 py-2 border-l-4 text-base font-medium" : "border-transparent text-white hover:bg-emerald-700 hover:border-gray-300  block pl-3 pr-4 py-2 border-l-4 text-base font-medium"}
             >
               Features
-            </a>
-            <a
-              href="#"
-              className="border-transparent text-white hover:bg-emerald-700 hover:border-gray-300  block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
-              aria-current="page"
+            </NavLink>
+            <NavLink
+              to={"/"}
+              className={({isActive}) => isActive ? "border-transparent text-white hover:bg-emerald-700 border-indigo-600  block pl-3 pr-4 py-2 border-l-4 text-base font-medium" : "border-transparent text-white hover:bg-emerald-700 hover:border-gray-300  block pl-3 pr-4 py-2 border-l-4 text-base font-medium"}
             >
               Customers
-            </a>
-            <a
-              href="#"
-              className="border-transparent text-white hover:bg-emerald-700 hover:border-gray-300  block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
+            </NavLink>
+            <NavLink
+              to={"integration"}
+              className={({isActive}) => isActive ? "border-transparent text-white hover:bg-emerald-700 border-indigo-600  block pl-3 pr-4 py-2 border-l-4 text-base font-medium" : "border-transparent text-white hover:bg-emerald-700 hover:border-gray-300  block pl-3 pr-4 py-2 border-l-4 text-base font-medium"}
             >
               Integrations
-            </a>
-            <a
-              href="#"
+            </NavLink>
+            <Link
+              to={"#"}
               className="border-transparent text-white hover:bg-emerald-700 hover:border-gray-300  block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
             >
               Login
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to={"#"}
               className="block w-full px-5 py-3 text-center  text-black font-bold bg-gray-50 hover:bg-gray-100"
             >
               Sign up
-            </a>
+            </Link>
           </div>
         </div>
       )}
