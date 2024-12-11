@@ -67,8 +67,8 @@ function IsEven() {
 
 function UserName() {
   const names = useRecoilValue(userNameSelector);
-  const [onEditMode, setOnEditMode] = useState(false);
   const setName = useSetRecoilState(userAtom);
+  const [index, setIndex] = useState(null);
   const [inputValue, setInputValue] = useState("");
 
   function handleInputChange(e) {
@@ -78,17 +78,17 @@ function UserName() {
   function handleEditDone() {
     setName((users) =>
       users.map((user, idx) =>
-        idx == onEditMode ? { ...user, name: inputValue } : user
+        idx == index ? { ...user, name: inputValue } : user
       )
     ); // Updates the atom with the new name
-    setOnEditMode(false); // Exits edit mode
+    setIndex(-1); // Exits edit mode
   }
 
   return (
     <div>
       {names.map((name, idx) => (
         <div key={idx} style={{ display: "flex", gap: 20, marginTop: 10 }}>
-          {onEditMode === idx ? (
+          {index === idx ? (
             <>
               <input
                 value={inputValue}
@@ -103,7 +103,7 @@ function UserName() {
               <h3>{name}</h3>
               <button
                 onClick={() => {
-                  setOnEditMode(idx);
+                  setIndex(idx);
                   setInputValue(name); // Prefill input with the current name
                 }}
               >
