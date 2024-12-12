@@ -3,15 +3,31 @@ import React, { createContext, useState } from "react";
 const cartContext = createContext();
 
 const CartProvider = ({ children }) => {
-  const [cartItems, setCartItems] = useState([
-    { id: 1, name: "Product A", price: 20, quantity: 1, image: "https://via.placeholder.com/64" },
-    { id: 2, name: "Product B", price: 35, quantity: 2, image: "https://via.placeholder.com/64" },
-  ]);
+  const [cartItems, setCartItems] = useState([]);
+
+  function addToCart(product, quantity) {
+    setCartItems((currItems) => {
+      const existingProductIndex = currItems.findIndex(
+        (item) => item.id === product.id
+      );
+
+      if (existingProductIndex >= 0) {
+        const updatedItems = [...currItems];
+        updatedItems[existingProductIndex].quantity += quantity;
+
+        return updatedItems;
+      } else {
+        return [...currItems, { ...product, quantity }];
+      }
+    });
+  }
+
   return (
     <cartContext.Provider
       value={{
         cartItems,
         setCartItems,
+        addToCart,
       }}
     >
       {children}

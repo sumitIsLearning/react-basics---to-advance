@@ -16,7 +16,9 @@ const CartItem = ({ item, onUpdateQuantity, onRemoveItem }) => {
   }
 
   function handleDecrement() {
-    onUpdateQuantity(item.id, item.quantity - 1);
+    if(item.quantity > 1) {
+      onUpdateQuantity(item.id, item.quantity - 1);
+    }
   }
 
 
