@@ -9,7 +9,7 @@ export const Header = () => {
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
         {/* Logo */}
         <div className="text-xl font-bold text-gray-800">
-          Cartify
+          <Link to={"/"} >Cartify</Link>
         </div>
 
         {/* Navigation Links */}

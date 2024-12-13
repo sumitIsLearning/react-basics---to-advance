@@ -8,6 +8,8 @@ import About from "./pages/About";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import Layout from "./pages/Layout";
+import NotFoundPage from "./pages/NotFoundPage";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const App = () => {
   return (
@@ -16,12 +18,19 @@ const App = () => {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="products" element={<Product />} />
-          <Route path="About" element={<About />} />
+          <Route path="about" element={<About />} />
           <Route path="cart" element={<Cart />} />
         </Route>
-      </Routes>
-      <Routes>
-        <Route path="checkout" element={<Checkout />} />
+        <Route
+          path="/checkout"
+          element={
+            <ProtectedRoute>
+              <Checkout />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </div>
   );

@@ -16,29 +16,28 @@ const CartItem = ({ item, onUpdateQuantity, onRemoveItem }) => {
   }
 
   function handleDecrement() {
-    if(item.quantity > 1) {
+    if (item.quantity > 1) {
       onUpdateQuantity(item.id, item.quantity - 1);
     }
   }
 
-
   return (
-    <div className="flex items-center justify-between border-b border-gray-200 py-4">
+    <div className="flex flex-col md:flex-row items-center justify-between border-b border-gray-200 py-4">
       {/* Product Image */}
       <img
         src={item.image}
         alt={item.name}
-        className="w-16 h-16 rounded object-cover"
+        className="w-20 h-20 md:w-16 md:h-16 rounded object-cover"
       />
 
       {/* Product Details */}
-      <div className="flex-1 ml-4">
+      <div className="flex-1 mt-4 md:mt-0 md:ml-4 text-center md:text-left">
         <h3 className="text-lg font-medium text-gray-800">{item.name}</h3>
         <p className="text-sm text-gray-600">${item.price.toFixed(2)}</p>
       </div>
 
       {/* Quantity Controls */}
-      <div className="flex items-center space-x-2">
+      <div className="mt-4 md:mt-0 flex items-center space-x-2">
         <button
           onClick={handleDecrement}
           className="px-2 py-1 bg-gray-200 text-gray-700 rounded hover:bg-gray-300"
@@ -60,7 +59,7 @@ const CartItem = ({ item, onUpdateQuantity, onRemoveItem }) => {
       </div>
 
       {/* Total Price */}
-      <div className="ml-4">
+      <div className="mt-4 md:mt-0 md:ml-4 text-center md:text-left">
         <p className="text-gray-800 font-medium">
           ${(item.price * item.quantity).toFixed(2)}
         </p>
@@ -69,7 +68,7 @@ const CartItem = ({ item, onUpdateQuantity, onRemoveItem }) => {
       {/* Remove Button */}
       <button
         onClick={() => onRemoveItem(item.id)}
-        className="ml-4 text-red-500 hover:text-red-700"
+        className="mt-4 md:mt-0 md:ml-4 text-red-500 hover:text-red-700"
       >
         Remove
       </button>
