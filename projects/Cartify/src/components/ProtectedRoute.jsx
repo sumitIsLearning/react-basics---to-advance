@@ -8,7 +8,7 @@ const ProtectedRoute = ({ children }) => {
 
   // Check if the cart has items
   if (cartItems.length === 0) {
-    return <Navigate to={"/cart"} /> // Redirect to the cart page
+    return <Navigate to={"/"} /> // Redirect to the cart page
   }
 
   return children; // Render the protected component (e.g., Checkout)
