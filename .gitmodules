@@ -1,0 +1,3 @@
+[submodule "projects/projects/weather_vista_backend"]
+	path = projects/projects/weather_vista_backend
+	url = https://github.com/sumitIsLearning/weather-vista-backend.git

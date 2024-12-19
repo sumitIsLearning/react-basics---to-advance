@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.cardContainer:hover .card {
+  transform: translateY(-5px) scale(1.05);
+}
+
